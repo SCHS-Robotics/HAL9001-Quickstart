@@ -8,7 +8,7 @@ priority: -5
 ----------------------
 Most people here probably know how to use input from a gamepad in their programs: You just type (gamepad1/gamepad2).(whatever button you want the input from) and you're good. In HAL, this method of getting input from the gamepad still exists, you just have to add a "robot." to the front of your reference to the gamepad (for example, `robot.gamepad1.left_stick_x` instead of `gamepad1.left_stick_x`). However, HAL also provides a much more useful method of interacting with the gamepad. Instead of referencing the gamepad controls directly, you can use a customizable gamepad. A customizable gamepad is essentially a "button manager" class; you provide it with button objects, and it will tell you the current values of each button you are interested in. At a high level, HAL customizable gamepads work a bit like this: 
 
-![](images/custom-gamepad.png)
+![](../images/custom-gamepad.png)
 
 ## An Example: Intake Class
 For instructive purposes, lets show an example of the customizable gamepad being used. Imagine for a second, that you are programming an intake subsystem with HAL. Your code currently looks like this:
