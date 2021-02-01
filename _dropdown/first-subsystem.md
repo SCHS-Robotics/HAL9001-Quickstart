@@ -14,7 +14,7 @@ priority: -1
 
 In image form, the general structure of a HAL program looks like this:
 
-![](images/subsystem-robot-opmode.png)
+![](../images/subsystem-robot-opmode.png)
 
 ## Making Your First Subsystem
    In order to make your first subsystem, you will first need to create a new java class in the teamcode folder. In this example I will call it MySubSystem.java:
