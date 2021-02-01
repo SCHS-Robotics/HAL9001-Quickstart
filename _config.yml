@@ -14,9 +14,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: HAL9001-Quickstart
-author: "<your_name>"
-email: "<your@mail>"
-description: A simple Jekyll theme based on potatoes and hackers
+author: "Cole Savage"
+email: "colesavage02@gmail.com"
+description: A quickstart guide for the HAL9001 library!
 baseurl: "/HAL9001-Quickstart" # the subpath of your site, e.g. /blog
 url: "https://schs-robotics.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
