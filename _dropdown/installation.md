@@ -96,7 +96,7 @@ Where the x.x.x is the version number of HAL9001 that you are using (check [the 
 
 5. Click tools, floobits, join project's workspace
 
-6. Click ****OVERWRITE LOCAL****. If you click overwrite remote **YOU WILL MURDER EVERY SINGLE ONE OF YOUR PROGRAMMERS. SERIOUSLY, DO NOT CLICK OVERWRITE REMOTE UNLESS YOU REALLY UNDERSTAND WHAT YOU ARE DOING.**
+6. Click _**OVERWRITE LOCAL**_. If you click overwrite remote **YOU WILL MURDER EVERY SINGLE ONE OF YOUR PROGRAMMERS. SERIOUSLY, DO NOT CLICK OVERWRITE REMOTE UNLESS YOU REALLY UNDERSTAND WHAT YOU ARE DOING.**
 
 ## Updating HAL to a New Version
 1. Go to your teamcode's build.release.gradle file and find this line that you added during the installation process:
