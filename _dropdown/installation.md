@@ -3,9 +3,11 @@ layout: page
 title: Installation and Update Guide
 description: How to install the HAL 9001 library
 dropdown: Tutorials
-priority: 2
+priority: 0
 ---
+----------------------------
 # HAL Installation and Update Guide
+----------------------------
   Hello! Thanks for deciding to download HAL! This guide is here to help you through the process of adding HAL to your project, as well as updating HAL when needed. If you're just starting with HAL, you should look at the [First Subsystem](first-subsystem.md) tutorial next in order to learn the first step in how to interact with HAL's command structure.
   
 ## How to Download HAL
