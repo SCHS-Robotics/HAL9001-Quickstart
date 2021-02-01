@@ -276,7 +276,7 @@ drive.setPower(0.5, 0.6, 0.7, 0.8);
 #### Holonomic Drivetrain Drive Modes
 Holonomic drivetrains have two different "drive modes," which tell the drivetrain whether to use field centric or robot-centric coordinates. If the drivetrain uses field-centric coordinates, the drivetrain's starting "front" position will ALWAYS be its front position, regardless of the robot's current orientation. If the drivetrain uses robot-centric coordinates, the "front" of the drivetrain will be the front of the robot. Heres an image comparing the two drive modes (with each motor force vector given a letter for clarity):
 
-![](images/standard-vs-field-centric.jpg)
+![](../images/standard-vs-field-centric.jpg)
 
 Which mode is used is purely preference based. *The drive mode will affect both teleop AND autonomous code*. If in teleop, moving the joystick forward will cause the drivetrain to move forward relative to where it thinks "forward" is. With field centric, thats the constant "front" direction. With standard, thats the current "front" direction of the robot. In autonomous code, the drive mode will affect move functions. Movement displacement and power vectors will assume that the y axis points along the robot's "front" side. If in field centric mode, then that will be relative to the global "front" position. If in standard mode, then that will be relative to the drivetrain's current "front" position. *By default, the drivetrain will start in standard mode*. The drive mode can be switched using the function `drive.setDriveMode()`. An example of this function being used to change the drivetrain to field centric mode is given below:
 
@@ -448,7 +448,7 @@ The fifth parameter is the config name of the perpendicular odometry pod, and th
 
 Here is a diagram of what the odometry pods should look like on the robot in this example (the diagram was taken from [here](https://github.com/NoahBres/road-runner-quickstart/blob/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/drive/TwoWheelTrackingLocalizer.java) and modified for HAL):
 
-![](images/two-wheel-localizer.png)
+![](../images/two-wheel-localizer.png)
 
 The parallel wheel is the vertical one, and the peripendicular wheel is the horizontal one.
 
@@ -514,7 +514,7 @@ This is the simplest constructor for ThreeWheelLocalizer. There is another const
 
 The first parameter in the constructor is the robot, which is used to create the encoder objects that measure position. The second parameter is the lateral distance between the parallel odometry pods, and the third parameter is how far offset in the y direction the perpendicular odometry pod is from the center of the robot. If units are not given for both values, it will assume they are in inches. Here is a diagram of how the odometry pods appear on the robot in this example (lateral distance of 12 inches, perpendicular wheel offset of 0 inches) (taken from the roadrunner quickstart and modified for HAL):
 
-![](images/three-wheel-localizer.png)
+![](../images/three-wheel-localizer.png)
 
 The next three parameters are the config names of the left, right, and perpendicular encoders, respectively, and the final parameter is the TrackingWheelConfig object describing the odometry pods.
 
@@ -560,20 +560,33 @@ drive = new MecanumDrive(this,
 Instead of a DriveConfig object, MecanumDrive uses a RoadrunnerConfig object. Creating an instance of RoadrunnerConfig takes the exact same parameters as a DriveConfig instance (and in fact, RoadrunnerConfig instances can be used instead of DriveConfig instances in MecanumDriveSimple!), but RoadrunnerConfig also has a number of other parameters that should be set for optimal roadrunner performance. These parameters are the same as the ones in the roadrunner quickstart, so refer to that guide for more information.
 
 Here is a list of the functions and what parameter each are used to set (+ a small description):
+
 * setFollowerTimeout(time value, time unit) or setFollowerTimeout(time value in milliseconds) --> sets the trajectory follower timeout value
+
 * setFollowerHeadingTolerance(angle, angle unit) or setFollowerHeadingTolerance(angle in radians) --> sets the trajectory follower heading tolerance
+
 * setFollowerXTolerance(x tolerance, x unit (distance)) or setFollowerXTolerance(x tolerance in inches) --> sets the trajectory follower x tolerance
+
 * setFollowerYTolerance(y tolerance, y unit (distance)) or setFollowerYTolerance(y tolerance in inches) --> sets the trajectory follower y tolerance
+
 * setKv(kV) --> kV --> manually sets the motor kV value
+
 * setKa(kA) --> kA --> manually sets the motor Ka value
+
 * setKStatic --> kStatic --> manually sets the motor kStatic value
+
 * setMaxAcceleration(max acceleration, acceleration unit (HALAccelerationUnit)) --> MAX_ACCEL (in/s^2 in roadrunner quickstart) --> sets the default max acceleration value for trajectories 
+
 * setMaxAngularAcceleration(max angular acceleration, angular acceleration unit (HALAngularAccelerationUnit)) --> MAX_ANG_ACCEL (rad/s^2 in roadrunner quickstart) --> sets the default max angular acceleration for  trajectories
+
 * setMaxVelocity(max velocity, velocity unit (HALVelocityUnit)) --> MAX_VEL (in/s in roadrunner quickstart) --> sets the default max velocity value for trajectories
+
 * setMaxAngularVelocity(max angular velocity, angular velocity unit (HALAngularVelocityUnit)) --> MAX_ANG_VEL (rad/s in roadrunner quickstart) --> sets the default maximum angular velocity for trajectories
+
 * setMotorVelocityPID(motor velocity pid coefficients (PIDFCoefficients)) --> MOTOR_VELO_PID --> motor velocity PID
 
 Here is an example of one of the functions getting used:
+
 ```java
 RoadrunnerConfig cfg = new RoadrunnerConfig(2,1,15,1120,133.9)
         .setMaxAcceleration(300, HALAccelerationUnit.MILES_PER_NANOSECOND_SQUARED);
@@ -608,11 +621,17 @@ Because of the coordinate system difference, calling `.build()` on a HALTrajecto
 Once the trajectory is built, it can be followed using either `drive.followTrajectory()` or `drive.followTrajectoryAsync()` (for asyncronous following).
 
 In addition to these normal trajectory building/following methods, the drive class also has a bunch of methods that allow you to interact with and get data directly from the roadrunner interface. Here is a list of all of them, along with what they all do:
+
 * getWheelPositions() --> Gets the wheel encoder positions
+
 * getWheelVelocities() --> Gets the wheel velocities
+
 * waitForRRInterfaceIdle() --> Updates the roadrunner interface repeatedly, making the program wait until the interface becomes idle (stops following a trajectory or turn profile)
+
 * rRInterfaceIsBusy() --> Gets whether the roadrunner interface is busy (i.e. following a trajectory or a turn profile)
+
 * updateRRInterface() --> Updates the roadrunner interface with the latest localizer positional data
+
 * setPoseHistoryLimit(max number of saved poses) --> Sets a limit on the number of pose2d values that are kept in history during the trajectory. By default it is set to 100
 
 And thats basically it! Yep, the roadrunner integration really isn't all that different from the simple mecanum drive. just remember to tune all the constants correctly and you should be good! There are even HAL versions of all roadrunner quickstart tuning programs [here](https://github.com/SCHS-Robotics/HAL_Simulator/tree/master/TeamCode/src/org/firstinspires/ftc/teamcode) (although *you should remove waitTime commands in some of them*, as they were used in the programs due to a problem with the simulator creating a velocity/position step function at low time intervals). 
