@@ -3,7 +3,7 @@ layout: page
 title: Your First HAL Autonomous Program
 description: Creating your first HAL9001 autonomous program
 dropdown: Tutorials
-priority: 0
+priority: -4
 ---
 ----------------------
 The process for making a HAL Autonomous program is very similar to that of a HAL Teleop program (If you haven't read that tutorial yet, you probably should now), but there are a few major differences.
