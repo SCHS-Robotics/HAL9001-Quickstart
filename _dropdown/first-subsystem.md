@@ -3,7 +3,7 @@ layout: page
 title: Your First Subsystem
 description: Making your first HAL9001 Subsystem
 dropdown: Tutorials
-priority: 3
+priority: -1
 ---
 
 ----------------
