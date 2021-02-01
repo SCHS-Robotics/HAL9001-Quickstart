@@ -3,7 +3,7 @@ layout: page
 title: Your First HAL Teleop Program
 description: Creating your first HAL9001 Teleop Program
 dropdown: Tutorials
-priority: 3
+priority: -3
 ---
 -----------------
 Now, if you have been reading the tutorial for this long, you might predict that the first step in creating a teleop program is to make a new java class in the teamcode folder... and you would be right! I will be calling this class MyHALTeleop.java, because I am definitely **_VERY_** creative with my naming conventions.
