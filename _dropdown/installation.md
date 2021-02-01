@@ -3,7 +3,7 @@ layout: page
 title: Installation and Update Guide
 description: How to install the HAL 9001 library
 dropdown: Tutorials
-priority: 1
+priority: 0
 ---
 ----------------------------
 # HAL Installation/Update Guide
