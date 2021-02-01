@@ -5,9 +5,7 @@ description: Test page
 dropdown: Tutorials
 priority: 2
 ---
-----------------
-# Building a Robot
-----------------
+----------------------
 The next step in creating a HAL program is to build a robot class. We start this the same way as we did the subsystem, by creating a new java class in the teamcode folder. In this example, I'll call it MyRobot.java.
 
 ```java
