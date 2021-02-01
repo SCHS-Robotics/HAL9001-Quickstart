@@ -1,6 +1,6 @@
 ---
 layout: page
-title: A Customizable Gamepad
+title: A Customizable Gamepad and Other Useful Things
 description: How to use the HAL9001 CustomizableGamepad class
 dropdown: Tutorials
 priority: -5
