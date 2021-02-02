@@ -1,7 +1,7 @@
 ---
 layout: page
 title: HAL Built-in Drivetrains
-description: How to use the HAL9001 Config System
+description: How to use the built-in HAL9001 drivetrain subsystems
 dropdown: Tutorials
 priority: -7
 ---
