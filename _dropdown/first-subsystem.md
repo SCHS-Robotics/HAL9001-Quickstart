@@ -5,9 +5,6 @@ description: Making your first HAL9001 Subsystem
 dropdown: Tutorials
 priority: -1
 ---
-
-----------------
-# Creating Your First HAL Program
 ----------------
 ## The Basic Structure of a HAL Program
    To create a program in HAL, you need 3 things: one or more subsystems, a robot, and an opmode. The robot controls all of your subsystems, and sets up the conditions under which they will run (turning on the GUI, defining the cameras, ect). Each subsystem contained within the robot is where you tell the robot _how_ to do something and when to do something _automatically_. It is where you put the specific code for making motors spin, servos turn, and computer vision to run. Finally, the opmode is where you tell the subsystems _what you want them to do_ by controlling them through the robot. It is where you control what each subsystem is doing _manually_. Essentially, the robot manages the subsystems, and the opmode manages the robot.
@@ -153,9 +150,14 @@ public class MySubSystem extends SubSystem {
     public void handle() {
         /*
         This is where we tell the robot WHEN to do this task. 
-        Here we are taking the input of the gamepad and plugging it into the function. 
-        If this was a driving function, it would drive the robot at the power provided by the gamepad. 
-        There is a much better way to access the gamepad controls, but this will be covered in a later tutorial.
+        Here we are taking the input of the gamepad and plugging
+        it into the function. 
+        
+        If this was a driving function, 
+        it would drive the robot at the power provided by the gamepad. 
+        
+        There is a much better way to access the gamepad controls, 
+        but this will be covered in a later tutorial.
         */
         doThisCoolThing(robot.gamepad1.left_stick_x);
     }
@@ -168,11 +170,13 @@ public class MySubSystem extends SubSystem {
     public void doThisCoolThing(double parameter) {
         /*
         Put code to define HOW to do this cool thing here. 
-        If this was a driving function, for example, you would have the robot drive at the specified power (double parameter).
+        If this was a driving function, for example, 
+        you would have the robot drive at the specified power 
+        (parameter).
         */
     }
 }
 ```
 
 ## The Next Step
-Congratulations! You now know how to create a basic subsystem! The next step in the process of creating a HAL program is to make a robot class. This is covered in the next tutorial: [building a robot](building-a-robot.md).
+Congratulations! You now know how to create a basic subsystem! The next step in the process of creating a HAL program is to make a robot class. This is covered in the next tutorial: [building a robot](building-a-robot.html).
