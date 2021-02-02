@@ -7,7 +7,11 @@ priority: -6
 ---
 ----------------
 ## Its time for Hardware to do the work!
-We now come to one of HAL's most powerful and well-known tools: the config system. HAL's config system allows you to change settings for your subsystems and programs __*during runtime*__, and then save these settings in a configuration file for quick deployment later. Not only does this allow drivers to switch their controls easily (if they want to try new controls, or if you have two drivers and their control preferences differ), but it also opens the door to allowing a huge set of subsystem behaviors to be modified on the fly. The speed of the intake, for example, could be adjusted via a configuration option so that it could be easily changed without reuploading the code. The autonomous program could have a configuration option for if the robot is playing on the near or far side of the field. The possibilities are almost endless. And the best part is, unlike FTC dashboard, this is 100% legal for competition use. So, with that introduction to get you excited about the power of HAL's config system, lets begin.
+We now come to one of HAL's most powerful and well-known tools: the config system. HAL's config system allows you to change settings for your subsystems and programs __*during runtime*__, and then save these settings in a configuration file for quick deployment later. Not only does this allow drivers to switch their controls easily (if they want to try new controls, or if you have two drivers and their control preferences differ), but it also opens the door to allowing a huge set of subsystem behaviors to be modified on the fly. 
+
+The speed of the intake, for example, could be adjusted via a configuration option so that it could be easily changed without reuploading the code. The autonomous program could have a configuration option for if the robot is playing on the near or far side of the field. The possibilities are almost endless. And the best part is, unlike FTC dashboard, this is 100% legal for competition use. 
+
+So, with that introduction to get you excited about the power of HAL's config system, lets begin.
 
 ## Subsystem Configuration
 Lets start with our subsystem from the last tutorial:
@@ -20,7 +24,8 @@ public class Intake extends SubSystem {
     private DcMotor leftIntake, rightIntake;
     private CustomizableGamepad gamepad;
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig,
+      Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -81,7 +86,7 @@ public class Intake extends SubSystem {
 }
 ```
 
-Now, lets say instead of having to pass our intake and outtake buttons in to the constructor, we want to be able to set them via the config system. The first thing we have to do is define a special function somewhere in the subsystem. This function has a few very specific requirements: it has to be public, static, return an array of ConfigParam objects (what those are will be explained later), take no parameters, and be annotated with an @TeleopConfig annotation. We will call this function teleopConfig, although its name doesn't matter to the HAL internals that will be searching for it.
+Now, lets say instead of having to pass our intake and outtake buttons in to the constructor, we want to be able to set them via the config system. The first thing we have to do is define a special function somewhere in the subsystem. This function has a few very specific requirements: it has to be public, static, return an array of ConfigParam objects (what those are will be explained later), take no parameters, and be annotated with an `@TeleopConfig` annotation. We will call this function teleopConfig, although its name doesn't matter to the HAL internals that will be searching for it.
 
 ```java
 public class Intake extends SubSystem {
@@ -91,7 +96,8 @@ public class Intake extends SubSystem {
     private DcMotor leftIntake, rightIntake;
     private CustomizableGamepad gamepad;
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig,
+      Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -240,7 +246,8 @@ public class Intake extends SubSystem {
     private DcMotor leftIntake, rightIntake;
     private CustomizableGamepad gamepad;
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig,
+      Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -468,7 +475,7 @@ public class Intake extends SubSystem {
 
 And that's all there is to it! The `robot.pullControls()` function takes a subsystem as input (in this case, this specific subsystem) and attempts to create a customizable gamepad out of all the configured controls in that subsystem. For non-gamepad config entries, it gets a bit more complicated. Lets demonstrate this by adding a way to configure the intake's power during both teleop AND autonomous.
 
-The `teleopConfig()` function we created only allows us to configure options for teleop. In order to configure options for autonomous as well, we will need to create an autonomous config function. The requirements for this function are the exact same as the teleop config function, except it should be annotated with @AutonomousConfig instead of @TeleopConfig.
+The `teleopConfig()` function we created only allows us to configure options for teleop. In order to configure options for autonomous as well, we will need to create an autonomous config function. The requirements for this function are the exact same as the teleop config function, except it should be annotated with `@AutonomousConfig` instead of `@TeleopConfig`.
 
 ```java
 public class Intake extends SubSystem {
@@ -845,7 +852,7 @@ public class MyHALTeleop extends BaseTeleop {
 }
 ```
 
-Lets say we want to be able to configure both of these in order to select whether we are playing on red alliance or blue alliance. In order to do that, we would use the @ProgramOptions annotation. This annotation takes an array of enum classes as input. When it is used, the program appears in the config menu as a configurable subsystem with the name given in the @Teleop or @Autonomous annotations. Each enum class is added as a ConfigParam, with the name of the enum class as the ConfigParam id, the first enum value as the default value, and all enum values as possible options. If we want to select between the red alliance and blue alliance using @ProgramOptions, all we would have to do is create an enum and register it with the config using @ProgramOptions, as shown below (in both programs):
+Lets say we want to be able to configure both of these in order to select whether we are playing on red alliance or blue alliance. In order to do that, we would use the `@ProgramOptions` annotation. This annotation takes an array of enum classes as input. When it is used, the program appears in the config menu as a configurable subsystem with the name given in the `@Teleop` or `@Autonomous` annotations. Each enum class is added as a ConfigParam, with the name of the enum class as the ConfigParam id, the first enum value as the default value, and all enum values as possible options. If we want to select between the red alliance and blue alliance using `@ProgramOptions`, all we would have to do is create an enum and register it with the config using `@ProgramOptions`, as shown below (in both programs):
 
 ```java
 @ProgramOptions(options = MyHALAutonomous.Alliance.class)
@@ -943,7 +950,7 @@ public class MyHALTeleop extends BaseTeleop {
 }
 ```
 
-Note that `robot.pullOpModeSettings()` has no parameters, and that the id of the entry coorsponding with the enum class provided in @ProgramOptions is the name of the enum class.
+Note that `robot.pullOpModeSettings()` has no parameters, and that the id of the entry coorsponding with the enum class provided in `@ProgramOptions` is the name of the enum class.
 
 ## Inter-Program Interactions
 Now that we know how to set up the configuration system for subsystems and programs, lets talk about how the config system really works. The config system has two main modes: autonomous mode and teleop mode. In autonomous mode, you configure all the options for autonomous and in teleop mode you configure all of the options for teleop. By default, when you run an autonomous program, you will be asked to configure all the autonomous program options, and then to configure all the teleop program options. 
@@ -952,7 +959,7 @@ The next time a teleop program is run using the same robot class, it will automa
 
 The teleop program will then continue to use those config options until either new options are set via running an autonomous program with that same robot again and selecting a different config file, or a button on the controller (the a button) is pressed to specifically select a new config file.
 
-While this works for competitions, in some cases (like when a program is being tested, is under construction, or is meant for debugging), this behavior is undesirable as it takes more time to select 2 config files than one. To account for these cases, an annotation exists called @StandAlone. When a program is annotated with @StandAlone, it functions as a standalone program, so you only have to select config for that specific program. If we wanted to make our Autonomous program a standalone program, for example, we would just annotate it with @StandAlone:
+While this works for competitions, in some cases (like when a program is being tested, is under construction, or is meant for debugging), this behavior is undesirable as it takes more time to select 2 config files than one. To account for these cases, an annotation exists called `@StandAlone`. When a program is annotated with `@StandAlone`, it functions as a standalone program, so you only have to select config for that specific program. If we wanted to make our Autonomous program a standalone program, for example, we would just annotate it with `@StandAlone`:
 
 ```java
 @StandAlone
@@ -972,7 +979,7 @@ public class MyHALAutonomous extends BaseAutonomous {
 
 A standalone autonomous program only requires you to select a config file for that autonomous program, and a standalone teleop program will never auto-run any config files.
 
-Unlike subsystem configuration settings, however, program configuration settings can't be pre-set by default. The reason for this is because the autonomous program doesn't know which specific teleop program you are going to run immediately afterwards, and so can't extract the relevent settings. In order to link one program to another, so that it knows which program will follow it, you would use the @LinkTo annotation.
+Unlike subsystem configuration settings, however, program configuration settings can't be pre-set by default. The reason for this is because the autonomous program doesn't know which specific teleop program you are going to run immediately afterwards, and so can't extract the relevent settings. In order to link one program to another, so that it knows which program will follow it, you would use the `@LinkTo` annotation.
 
 ```java
 @LinkTo(destination = "MyHalTeleop")
@@ -1005,9 +1012,9 @@ public class MyHALTeleop extends BaseTeleop {
 }
 ```
 
-The @LinkTo annotation does 2 things. First, it tells your autonomous program which program will run after it, and lets you access and pre-set that program's configuration settings. It does this using the "destination" input, which is the name (as specified in @Autonomous or @Teleop) of the next program that will be run. Second, it automatically transitions to the destination program after the program it annotates has finished running. 
+The `@LinkTo` annotation does 2 things. First, it tells your autonomous program which program will run after it, and lets you access and pre-set that program's configuration settings. It does this using the "destination" input, which is the name (as specified in `@Autonomous` or `@Teleop`) of the next program that will be run. Second, it automatically transitions to the destination program after the program it annotates has finished running. 
 
-In our above example, as soon as autonomous is complete, teleop would start without any user input whatsoever. This works regardless of if the config system is being used whatsoever (it also works even if one or both programs are @StandAlone programs), and is not limited to just 1 transition. If this functionality is not desirable, you can turn it off by setting an optional second input ("auto_transition") to false.
+In our above example, as soon as autonomous is complete, teleop would start without any user input whatsoever. This works regardless of if the config system is being used whatsoever (it also works even if one or both programs are `@StandAlone programs`), and is not limited to just 1 transition. If this functionality is not desirable, you can turn it off by setting an optional second input ("auto_transition") to false.
 
 ```java
 @LinkTo(destination = "MyHalTeleop", auto_transition = false)
@@ -1136,7 +1143,7 @@ then the second one created will have a 1 at the end of its name, and will appea
 #|Done
 ```
 
-Obviously, this is not ideal, so there is a way to manually specify what a subsystem is called in the config. The @ConfigLabel annotation allows you to manually give a subsystem a label that will be displayed in the config instead of its automatically-chosen label. In the previous example, it would be used like this:
+Obviously, this is not ideal, so there is a way to manually specify what a subsystem is called in the config. The `@ConfigLabel` annotation allows you to manually give a subsystem a label that will be displayed in the config instead of its automatically-chosen label. In the previous example, it would be used like this:
 
 ```java
 public class ExampleRobot extends Robot {
@@ -1159,4 +1166,4 @@ In the config, each subsystem would then be displayed like this:
 ```
 
 # Next Tutorial
-Congratulations! You now know how to use HAL's config system! Have fun making all programs configurable! the next turorial will discuss how to use HAL's [built-in-drivetrains](built-in-drivetrains.md).
+Congratulations! You now know how to use HAL's config system! Have fun making all programs configurable! the next turorial will discuss how to use HAL's [built-in-drivetrains](built-in-drivetrains.html).
