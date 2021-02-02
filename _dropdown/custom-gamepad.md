@@ -283,7 +283,8 @@ public class Intake extends SubSystem {
     private DcMotor leftIntake, rightIntake;
     private CustomizableGamepad gamepad;
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, 
+      Button<Boolean> intakeButton, Button<Boolean> outtakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -347,13 +348,15 @@ public class Intake extends SubSystem {
 Notice how none of the code using the buttons needs to be changed, and so if we wanted to change the intake button to x and the outtake button to y, all we would have to do would be create our intake subsystem as 
 
 ```java
-new Intake(this, "left intake", "right intake", new Button<Boolean>(1, Button.BooleanInputs.x), new Button<Boolean>(1, Button.BooleanInputs.y))
+new Intake(this, "left intake", "right intake", 
+    new Button<Boolean>(1, Button.BooleanInputs.x), new Button<Boolean>(1, Button.BooleanInputs.y))
 ```
 
 instead of 
 
 ```java 
-new Intake(this, "left intake", "right intake", new Button<Boolean>(1, Button.BooleanInputs.a), new Button<Boolean>(1, Button.BooleanInputs.b))
+new Intake(this, "left intake", "right intake", 
+    new Button<Boolean>(1, Button.BooleanInputs.a), new Button<Boolean>(1, Button.BooleanInputs.b))
 ```
 
 Third, all button types have a special "nobutton" type that will always return the 0 value for that button type. "nobutton" wil cause a boolean button to always return false, a double button to always return 0, and a vector button to always return the zero vector. This is useful for if you want to disable controls for debugging without having to delete or comment out code, or if you want to have optional controls (you can have the controls default to nobutton unless otherwise specified). Finally, the ability to make your controls variable is **_a suprise tool that will help us later_** in the config tutorial. Trust me, it becomes _VERY_ useful.
@@ -369,7 +372,8 @@ public class Intake extends SubSystem {
     private DcMotor leftIntake, rightIntake;
     private CustomizableGamepad gamepad;
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, 
+      Button<Boolean> intakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -432,7 +436,8 @@ public class Intake extends SubSystem {
     private CustomizableGamepad gamepad;
     private Toggle intakeToggle = new Toggle(Toggle.ToggleTypes.flipToggle, false);
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, 
+      Button<Boolean> intakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -505,7 +510,8 @@ public class Intake extends SubSystem {
     private CustomizableGamepad gamepad;
     private Toggle intakeToggle = new Toggle(Toggle.ToggleTypes.flipToggle, false);
     
-    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, Button<Boolean> intakeButton) {
+    public Intake(Robot robot, String leftIntakeConfig, String rightIntakeConfig, 
+      Button<Boolean> intakeButton) {
         super(robot);
         leftIntake = robot.hardwareMap.dcMotor.get(leftIntakeConfig);
         rightIntake = robot.hardwareMap.dcMotor.get(rightIntakeConfig);
@@ -567,4 +573,4 @@ public class Intake extends SubSystem {
 Each time the intake toggle button is pressed, the state of the toggle will update with the current value of the intake button (true or false). When `getCurrentState()` is called, the toggle will be polled for its current state. It will respond with either true or false, depending on the data that it has been given over time via `updateToggle()` and the specific type of toggle it is. In this case, each time the button is pressed, the toggle with alternate between the true state and the false state, causing pressing the button once to turn the intake on, and pressing the button a second time to turn the intake off.
 
 ### The Next Tutorial
-Congratulations! You now know how to use the customizable gamepad class, the button class, and the toggle class to create a powerful system of variable controls! But remember how I said that this ability to make variable buttons was "__*a suprise tool that would help us later*__?" Well, this is because of the next tutorial, [Config: The Art and Science of Making Hardware do all the Work](hal-config.md), which takes this ability and makes it even more powerful.
+Congratulations! You now know how to use the customizable gamepad class, the button class, and the toggle class to create a powerful system of variable controls! But remember how I said that this ability to make variable buttons was "__*a suprise tool that would help us later*__?" Well, this is because of the next tutorial, [Config: The Art and Science of Making Hardware do all the Work](hal-config.html), which takes this ability and makes it even more powerful.
