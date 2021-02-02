@@ -179,4 +179,4 @@ public class MySubSystem extends SubSystem {
 ```
 
 ## The Next Step
-Congratulations! You now know how to create a basic subsystem! The next step in the process of creating a HAL program is to make a robot class. This is covered in the next tutorial: [building a robot](building-a-robot.html).
+Congratulations! You now know how to create a basic subsystem! The next step in the process of creating a HAL program is to make a robot class. This is covered in the next tutorial: [Building a Robot](building-a-robot.html).
