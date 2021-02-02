@@ -74,7 +74,7 @@ public class MyHALTeleop extends BaseTeleop {
 
 This will automatically build the robot for you. Even though it looks like you never set robot to any value, it is being set to your auto-built robot behind the scenes. This method shortens the amount of code you have to write to build the robot, but provides less control over the robot creation process. Note that in this case robot HAS to be a public variable in order for the internal code to reach it. If you try to do both methods by overriding buildRobot and using the `@MainRobot` annotation, HAL will prioritize the buildRobot function.
 
-Finally, we have to add the finishing touch to our program, an `@Teleop` annotation. This tells the FTC app to put this program on the phone. It takes two parameters, a name and a group. **The name you put in the annotation is the name that shows up on the phone, not the class name!** If your program is missing, chances are you forgot to put the `@Teleop` annotation on top of the class. The group parameter is optional, and is used only for organizing your opmodes. You don't have to put it. Our program then becomes:
+Finally, we have to add the finishing touch to our program, an `@Teleop` annotation. This tells the FTC app to put this program on the phone. It takes two parameters, a name and a group. _**The name you put in the annotation is the name that shows up on the phone, not the class name!**_ If your program is missing, chances are you forgot to put the `@Teleop` annotation on top of the class. The group parameter is optional, and is used only for organizing your opmodes. You don't have to put it. Our program then becomes:
 
 ```java
 @Teleop(name = "MyHalTeleop", group = "Example Programs")
@@ -189,4 +189,4 @@ public class MyHALTeleop extends BaseTeleop {
 }
 ```
 
-Now that we have our HAL Teleop program, lets make a [HAL Autonomous](hal-autonomous.md) program!
+Now that we have our HAL Teleop program, lets make a [HAL Autonomous](hal-autonomous.html) program!
