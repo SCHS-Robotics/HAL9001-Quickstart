@@ -47,7 +47,7 @@ public class MyRobot extends Robot {
 }
 ```
 
-Note that we haven't actually set the subsystem equal to anything yet, we are just telling the robot that it exists. Now, in the constructor, we have to actually create the subsystem. Also note that the **field is declared as public**. This is so the internal robot class can access the subsystem to register it. Making the subsystem private or protected will cause an error to occur.
+Note that we haven't actually set the subsystem equal to anything yet, we are just telling the robot that it exists. Now, in the constructor, we have to actually create the subsystem. Also note that the *field is declared as public*. This is so the internal robot class can access the subsystem to register it. Making the subsystem private or protected will cause an error to occur.
 
 ```java
 public class MyRobot extends Robot {
@@ -74,4 +74,4 @@ public class MyRobot extends Robot {
 }
 ```
 
-Congratulations! You have made a robot with one subsystem! To add more subsystems, simply repeat the process of defining a subsystem and then creating it with the "new" keyword. You are now ready to create your first HAL programs! Lets start with a [HAL Teleop](hal-teleop.md) Program.
+Congratulations! You have made a robot with one subsystem! To add more subsystems, simply repeat the process of defining a subsystem and then creating it with the "new" keyword. You are now ready to create your first HAL programs! Lets start with a [HAL Teleop](hal-teleop.html) Program.
