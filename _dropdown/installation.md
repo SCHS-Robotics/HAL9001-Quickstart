@@ -6,7 +6,7 @@ dropdown: Tutorials
 priority: 0
 ---
 ----------------------------
-Hello! Thanks for deciding to download HAL! This guide is here to help you through the process of adding HAL to your project, as well as updating HAL when needed. If you're just starting with HAL, you should look at the [First Subsystem](_dropdown/first-subsystem.md) tutorial next in order to learn the first step in how to interact with HAL's command structure.
+Hello! Thanks for deciding to download HAL! This guide is here to help you through the process of adding HAL to your project, as well as updating HAL when needed. If you're just starting with HAL, you should look at the [First Subsystem](first-subsystem.html) tutorial next in order to learn the first step in how to interact with HAL's command structure.
   
 ## How to Download HAL
 ### Install Android Studio (Click Image)
