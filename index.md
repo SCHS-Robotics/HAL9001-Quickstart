@@ -1,7 +1,7 @@
 ---
 layout: default
 title: HAL9001-Quickstart
-description: Test page
+description: A quickstart guide to the HAL9001 Library!
 ---
 # Welcome to the HAL 9001 Quickstart Guide!
 
