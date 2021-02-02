@@ -24,7 +24,7 @@ url: "https://schs-robotics.github.io" # the base hostname & protocol for your s
 # Custom settings
 # ------------------------------------------------------------------------------
 # Useful links
-github_username: "<github_username>"
+github_username: "Faraday314"
 facebook_username: "<facebook_username>"
 twitter_username: "<twitter_username>"
 linkedin_id: "<linkedin_id>"
@@ -34,7 +34,7 @@ linkedin_id: "<linkedin_id>"
 remote_theme: luxedo/jekyll-theme-potato-hacker   # Or this
 theme_repository: "https://github.com/luxedo/jekyll-theme-potato-hacker"
 theme_base: "dark"       # Theme palette (light | dark)
-theme_switch: on         # Show color switch (on | off)
+theme_switch: off         # Show color switch (on | off)
 
 # Extra settings
 blog: off                 # Show blog tag and post list (on | off)
@@ -45,9 +45,8 @@ highlighter_theme: gruvbox  # Theme of the syntax_highlighter [base16 |
                             # colorful | github | gruvbox | molokai |
                             # monokai | pastie | thankful_eyes | tulip ]
 toolbar_priority:        # Order of the items in the toolbar (except for blog and home)
-  - dropdown2
+  - Tutorials
   - About
-  - dropdown1
 
 # Collections
 collections:
