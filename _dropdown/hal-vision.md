@@ -19,7 +19,7 @@ The first step for using HAL's vision system is to define the camera or cameras 
 public class MyRobot extends Robot {
     @InternalCamera(resWidth = 320, resHeight = 240, usesViewport = true)
     public OpenCvInternalCamera camera;
-	@ExternalCamera(resWidth = 320, resHeight = 240, configName = "my camera", usesViewport = false)
+    @ExternalCamera(resWidth = 320, resHeight = 240, configName = "my camera", usesViewport = false)
     public OpenCvCamera camera;
 
     public MyRobot(OpMode opMode) {
