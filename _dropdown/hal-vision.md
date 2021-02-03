@@ -173,7 +173,7 @@ public class MyVisionSubSystem extends VisionSubSystem {
 
     }
 	
-	public static class SquarePipeline extends HALPipeline {
+    public static class SquarePipeline extends HALPipeline {
         @Override
         public Mat processFrame(Mat input) {
             Imgproc.rectangle(
@@ -303,7 +303,7 @@ public class MyVisionSubSystem extends VisionSubSystem {
 
     }
 	
-	@Camera(id = Robot.INTERNAL_CAMERA_ID)
+    @Camera(id = Robot.INTERNAL_CAMERA_ID)
     @Camera(id = "my camera")
     public static class SquarePipeline extends HALPipeline {
         @Override
@@ -366,7 +366,7 @@ public class MyVisionSubSystem extends VisionSubSystem {
 
     }
 	
-	@Camera(id = Robot.ALL_CAMERAS_ID)
+    @Camera(id = Robot.ALL_CAMERAS_ID)
     public static class SquarePipeline extends HALPipeline {
         @Override
         public Mat processFrame(Mat input) {
@@ -469,7 +469,7 @@ And thats it, the pipeline will get run as part of the vision system. Congratula
 
 If you want to access the pipeline instance over the course of the subsystem, just store it in a field before returning it in getPipelines().
 
-```
+```java
 public class MyVisionSubSystem extends VisionSubSystem {
     private SquarePipeline myPipeline = new SquarePipeline();
     
