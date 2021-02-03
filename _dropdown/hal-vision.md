@@ -531,7 +531,7 @@ public class MyVisionSubSystem extends VisionSubSystem {
 }
 ```
 
-### Internal Camera Fun
+### Internal Camera Direction Switching
 Ok, if you remember at the beginning of the tutorial I said that it wasn't possible to use both the front and back phone internal cameras. This is correct, you can't use both the front and back cameras _**AT THE SAME TIME**_. HAL has a function to reverse the direction of the internal camera during the program if you want to.
 
 Calling robot.reverseInternalCameraDirection() will cause the direction of the internal camera to flip either from back to front or front to back. All pipelines associated with the internal camera will transfer over.
