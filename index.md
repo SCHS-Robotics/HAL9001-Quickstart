@@ -25,7 +25,7 @@ So, lets get started! If you are new to HAL, click [here](_dropdown/installation
 
 8. [Built-in-Drivetrains](_dropdown/built-in-drivetrains.md)
 
-9. [The HAL Vision System](index.md)
+9. [The HAL Vision System](_dropdown/hal-vision.md)
 
 10. [Calibration Systems: Experiments > Theory](index.md)
 
