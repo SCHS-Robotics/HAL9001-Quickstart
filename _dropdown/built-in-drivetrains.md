@@ -664,4 +664,4 @@ You will still have access to many of the base drivetrain functions like stopAll
 Ok this is the least recommended of the least recommended options. Basically, the essence of this option is: extend a subsystem and write a drivetrain from the ground up. I mean, you can do that, but WHY WOULD YOU??? THE REASON ABSTRACT CLASSES EXIST IS SO YOU DON'T HAVE TO... ahem, sorry about that. Anyway, yea this is not recommended as it's a lot of work, you won't get any sleep, and there are just better options.
 
 # Congrats! You Finished Reading!!!
-Wow, that took a while. Congratulations on reading until the end! You now know how to use HAL's built-in drivetrains! Our next tutorial will be on something a little shorter and more fun, [The HAL Vision System](index.md)!
+Wow, that took a while. Congratulations on reading until the end! You now know how to use HAL's built-in drivetrains! Our next tutorial will be on something a little shorter and more fun, [The HAL Vision System](hal-vision.html)!
