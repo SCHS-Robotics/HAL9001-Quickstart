@@ -1166,4 +1166,4 @@ In the config, each subsystem would then be displayed like this:
 ```
 
 # Next Tutorial
-Congratulations! You now know how to use HAL's config system! Have fun making all programs configurable! the next turorial will discuss how to use HAL's [built-in-drivetrains](built-in-drivetrains.html).
+Congratulations! You now know how to use HAL's config system! Have fun making all programs configurable! the next turorial will discuss how to use HAL's [built-in drivetrains](built-in-drivetrains.html).
