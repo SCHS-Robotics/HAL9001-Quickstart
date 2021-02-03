@@ -441,7 +441,7 @@ public class MyVisionSubSystem extends VisionSubSystem {
 
     }
 	
-	@Camera(id = "my camera")
+    @Camera(id = "my camera")
     public static class SquarePipeline extends HALPipeline {
         @Override
         public Mat processFrame(Mat input) {
