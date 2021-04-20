@@ -25,9 +25,9 @@ url: "https://schs-robotics.github.io" # the base hostname & protocol for your s
 # ------------------------------------------------------------------------------
 # Useful links
 github_username: "Faraday314"
-facebook_username: "<facebook_username>"
-twitter_username: "<twitter_username>"
-linkedin_id: "<linkedin_id>"
+facebook_username:
+twitter_username:
+linkedin_id:
 
 # Theme
 # theme: jekyll-theme-potato-hacker                 # Uncomment this
